@@ -3,6 +3,32 @@ const resolveToken = (req, res, next) => {
 };
 
 
+const { Client } = require('pg');
+
+const client = new Client({
+  connectionString: process.env.DATABASE_URL,
+  ssl: {
+    rejectUnauthorized: false
+  }
+});
+
+client.connect();
+
+let dbresp;
+
+client.query('SELECT table_schema,table_name FROM information_schema.tables;', (err, res) => {
+  if (err) throw err;
+  for (let row of res.rows) {
+    dbresp = row;
+  }
+  client.end();
+});
+
+
+const handleGet = (req, res, next) => {
+    res.json(dbresp);
+};
+
 /*
 //GET '/tea'
 const getAllTea = (req, res, next) => {
@@ -39,5 +65,6 @@ const deleteOneTea = (req, res, next) => {
 
 //export controller functions
 module.exports = {
-    resolveToken
+    resolveToken,
+    handleGet
 };
