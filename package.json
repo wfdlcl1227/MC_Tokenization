@@ -1,0 +1,27 @@
+{
+  "name": "mc_tokenization",
+  "version": "14.16.0",
+  "description": "MC Token",
+  "engines": {
+    "node": "12.14.1"
+  },
+  "main": "server.js",
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "chris-mc-token"
+  },
+  "keywords": [
+    "chris-mc-token"
+  ],
+  "author": "chris",
+  "license": "ISC"
+
+}
